@@ -61,23 +61,12 @@
   grid-column: 2 / 4;
   grid-row: 1 / 4;
 }
-.three {
-  grid-column: 4;
-  grid-row: 1 / 2;
-}
 
-.four {
-  grid-column: 4;
-  grid-row: 2;
-}
-.five {
-  grid-column: 1;
-  grid-row: 4;
-}
 .six {
   grid-column: 4;
   grid-row: 3;
 }
+
 
 .radio {
   display: flex;

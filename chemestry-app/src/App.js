@@ -41,7 +41,7 @@ function App() {
           <form action="" className="formulario-soluciones">
             <div className="radio">
               <div className="radio-group">
-                <input type="radio" name="Solucion Real" checked="checked" />
+                <input type="radio" name="Solucion Real" />
                 <label htmlFor="Solucion Real">Solución Real</label>
               </div>
               <div className="radio-group">
@@ -57,7 +57,7 @@ function App() {
           <form action="" className="formulario-metodos">
             <div className="radio">
               <div className="radio-group">
-                <input type="radio" name="Solucion Real" checked="checked" />
+                <input type="radio" name="Solucion Real"  />
                 <label htmlFor="Solucion Real">Margules</label>
               </div>
               <div className="radio-group">
@@ -71,7 +71,6 @@ function App() {
             </div>
           </form>
         </div>
-        <div className="five">Five</div>
         <div className="six">
           <h2>Fracciones molares</h2>
           <hr />
@@ -87,7 +86,6 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="seven">Seven</div>
       </div>
     </div>
   );
