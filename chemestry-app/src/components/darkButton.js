@@ -19,14 +19,21 @@ const PurpleSwitch = withStyles({
   track: {},
 })(Switch);
 
+var controlador=1;
 
 export default function CustomizedSwitches() {
   const [state, setState] = React.useState({
-    checkedA: true,
+    checkedA: false,
   });
 
   const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
+    if(controlador==1){
+      setState({ ...state, [event.target.name]: event.target.checked }, document.body.style.backgroundColor = "#3f3f3f");
+      controlador=0;
+    }else{
+      setState({ ...state, [event.target.name]: event.target.checked }, document.body.style.backgroundColor = "#ffffff");
+      controlador=1;
+    }
   };
 
   return (

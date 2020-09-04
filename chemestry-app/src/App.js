@@ -33,7 +33,7 @@ function App() {
           <Example />
           <div className="cnic">
           <div className="seven"><Component1/></div>
-          <div className="eight"><Component1/></div>
+          <div className="eight"><Component2/></div>
           </div>
         </div>
         <div className="three">
