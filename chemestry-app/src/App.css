@@ -1,3 +1,13 @@
+/* En root se definen los colores principales y guardan en variables */
+/* https://colorhunt.co/palette/12457 */
+
+:root {
+  --main-color: #a6acec;
+  --dark-main-color: #a56cc1;
+  --green-color: #ace7ef;
+  --light-green-color: #cefff1;
+}
+
 .App-header {
   margin: 5rem 0;
   display: flex;
@@ -17,7 +27,7 @@
 }
 
 .btn:hover {
-  background-color: #a6acec;
+  background-color: var(--main-color);
   color: white;
 }
 
@@ -87,11 +97,11 @@ label {
 }
 
 .wrap-fracciones button:hover {
-  background-color: #a6acec;
+  background-color: var(--main-color);
   color: white;
 }
 .wrap-fracciones button:focus {
-  background-color: #a6acec;
+  background-color: var(--main-color);
   color: white;
   transform: scale(1.1);
 }
