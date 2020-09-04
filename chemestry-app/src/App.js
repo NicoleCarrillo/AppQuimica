@@ -25,8 +25,8 @@ function App() {
         <div className="one">
           <div className="container">
             <h2>Temperatura/Presión</h2>
+            <div className="hey"><Slider/></div>
             <input type="text" />
-            <Slider/>
           </div>
         </div>
         <div className="line-chart">

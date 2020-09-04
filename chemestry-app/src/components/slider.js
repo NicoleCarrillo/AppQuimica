@@ -23,8 +23,8 @@ ValueLabelComponent.propTypes = {
 
 const useStyles = makeStyles({
   root: {
-    height: 300,
-    borderRadius: 10,
+    height: 500,
+    borderRadius: 20,
   },
 });
 
@@ -76,8 +76,7 @@ const marks = [
   {
     value: 100,
     label: '100°C',
-  },
-  
+  },  
 ];
 
 export default function VerticalSlider() {
