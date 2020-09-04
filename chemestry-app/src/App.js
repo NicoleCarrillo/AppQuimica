@@ -5,9 +5,9 @@ import { FaCloudscale } from "react-icons/fa";
 import Button from "./components/button";
 import Slider from "./components/slider";
 import Dark from "./components/darkButton";
-
+import Component1 from "./components/dropDown1";
+import Component2 from "./components/dropDown2";
 import "./App.css";
-import { dark } from "@material-ui/core/styles/createPalette";
 
 function App() {
   return (
@@ -31,6 +31,10 @@ function App() {
         </div>
         <div className="line-chart">
           <Example />
+          <div className="cnic">
+          <div className="seven"><Component1/></div>
+          <div className="eight"><Component1/></div>
+          </div>
         </div>
         <div className="three">
           <h2>Tipo de solución</h2>
@@ -82,7 +86,7 @@ function App() {
               <Button name="Temperatura/Presión" />
             </div>
           </div>
-        </div>
+        </div> 
       </div>
     </div>
   );
