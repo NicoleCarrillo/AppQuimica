@@ -4,13 +4,18 @@ import { FaTemperatureLow } from "react-icons/fa";
 import { FaCloudscale } from "react-icons/fa";
 import Button from "./components/button";
 import Slider from "./components/slider";
+import Dark from "./components/darkButton";
 
 import "./App.css";
+import { dark } from "@material-ui/core/styles/createPalette";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <div className="dark">
+         <Dark/>
+        </div>
         <FaTemperatureLow color="#a56cc1" />
         <Button name="Temperatura" />
         <Button name="Presión" />

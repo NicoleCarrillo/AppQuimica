@@ -67,7 +67,6 @@
   grid-row: 3;
 }
 
-
 .radio {
   display: flex;
   flex-direction: column;
@@ -100,6 +99,14 @@ label {
 
 .one .container input[type="text"]{
   margin-bottom: 2rem;
+}
+
+.dark{ 
+  display: flex;
+  padding-right: 110rem;
+  transform: scale(1.2);
+  position: absolute;
+  
 }
 
 
