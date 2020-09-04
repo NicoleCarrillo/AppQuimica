@@ -12,10 +12,10 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
+      <div className="dark">
+        <Dark />
+      </div>
       <header className="App-header">
-        <div className="dark">
-         <Dark/>
-        </div>
         <FaTemperatureLow color="#a56cc1" />
         <Button name="Temperatura" />
         <Button name="Presión" />
@@ -25,15 +25,21 @@ function App() {
         <div className="one">
           <div className="container">
             <h2>Temperatura/Presión</h2>
-            <div className="hey"><Slider/></div>
+            <div className="hey">
+              <Slider />
+            </div>
             <input type="text" />
           </div>
         </div>
         <div className="line-chart">
           <Example />
           <div className="cnic">
-          <div className="seven"><Component1/></div>
-          <div className="eight"><Component2/></div>
+            <div className="seven">
+              <Component1 />
+            </div>
+            <div className="eight">
+              <Component2 />
+            </div>
           </div>
         </div>
         <div className="three">
@@ -58,7 +64,7 @@ function App() {
           <form action="" className="formulario-metodos">
             <div className="radio">
               <div className="radio-group">
-                <input type="radio" name="Solucion Real"  />
+                <input type="radio" name="Solucion Real" />
                 <label htmlFor="Solucion Real">Margules</label>
               </div>
               <div className="radio-group">
@@ -86,7 +92,7 @@ function App() {
               <Button name="Temperatura/Presión" />
             </div>
           </div>
-        </div> 
+        </div>
       </div>
     </div>
   );
