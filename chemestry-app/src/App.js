@@ -48,11 +48,11 @@ function App() {
           <form action="" className="formulario-soluciones">
             <div className="radio">
               <div className="radio-group">
-                <input type="radio" name="Solucion Real" />
+                <input type="radio" name="Solucion" value="Solucion Real" />
                 <label htmlFor="Solucion Real">Solución Real</label>
               </div>
               <div className="radio-group">
-                <input type="radio" name="Solucion Ideal" />
+                <input type="radio" name="Solucion" value= "Solucion Ideal" />
                 <label htmlFor="Solucion Ideal">Solución Ideal</label>
               </div>
             </div>
@@ -64,15 +64,15 @@ function App() {
           <form action="" className="formulario-metodos">
             <div className="radio">
               <div className="radio-group">
-                <input type="radio" name="Solucion Real" />
+                <input type="radio" name="Solucion Real" value="Margules" />
                 <label htmlFor="Solucion Real">Margules</label>
               </div>
               <div className="radio-group">
-                <input type="radio" name="Solucion Ideal" />
+                <input type="radio" name="Solucion Real" value="Wilson" />
                 <label htmlFor="Solucion Ideal">Wilson</label>
               </div>
               <div className="radio-group">
-                <input type="radio" name="Solucion Ideal" />
+                <input type="radio" name="Solucion Real" value="van Laar" />
                 <label htmlFor="Solucion Ideal">van Laar</label>
               </div>
             </div>
