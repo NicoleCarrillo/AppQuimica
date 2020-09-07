@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Example from "./components/chartEx";
 import { FaTemperatureLow } from "react-icons/fa";
 import { FaCloudscale } from "react-icons/fa";
@@ -10,27 +10,21 @@ import Component2 from "./components/dropDown2";
 import "./App.css";
 import { Hidden } from "@material-ui/core";
 
+class App extends Component {
+  state = {
+    show: true,
+  };
 
-
-class App extends Component{
-
-  constructor(){
-    super();
-    this.state={
-      show:true
-    }
+  hide() {
+    this.setState({
+      show: false,
+    });
   }
 
-  hide(){
+  show() {
     this.setState({
-      show:false
-    })
-  }
-
-  show(){
-    this.setState({
-      show:true
-    })
+      show: true,
+    });
   }
 
   render() {
@@ -72,40 +66,48 @@ class App extends Component{
             <form action="" className="formulario-soluciones">
               <div className="radio">
                 <div className="radio-group">
-                  <input type="radio" name="Solucion" value="Solucion Real" onClick={()=>this.show()} />
+                  <input
+                    type="radio"
+                    name="Solucion"
+                    value="Solucion Real"
+                    onClick={() => this.show()}
+                  />
                   <label htmlFor="Solucion Real">Solución Real</label>
                 </div>
                 <div className="radio-group">
-                  <input type="radio" name="Solucion" value= "Solucion Ideal" onClick={()=>this.hide()} />
+                  <input
+                    type="radio"
+                    name="Solucion"
+                    value="Solucion Ideal"
+                    onClick={() => this.hide()}
+                  />
                   <label htmlFor="Solucion Ideal">Solución Ideal</label>
                 </div>
               </div>
             </form>
           </div>
-          {
-            this.state.show?
+          {this.state.show ? (
             <div className="four">
-            <h2>Método</h2>
-            <hr />
-            <form action="" className="formulario-metodos">
-              <div className="radio">
-                <div className="radio-group">
-                  <input type="radio" name="Solucion Real" value="Margules" />
-                  <label htmlFor="Solucion Real">Margules</label>
+              <h2>Método</h2>
+              <hr />
+              <form action="" className="formulario-metodos">
+                <div className="radio">
+                  <div className="radio-group">
+                    <input type="radio" name="Solucion Real" value="Margules" />
+                    <label htmlFor="Solucion Real">Margules</label>
+                  </div>
+                  <div className="radio-group">
+                    <input type="radio" name="Solucion Real" value="Wilson" />
+                    <label htmlFor="Solucion Ideal">Wilson</label>
+                  </div>
+                  <div className="radio-group">
+                    <input type="radio" name="Solucion Real" value="van Laar" />
+                    <label htmlFor="Solucion Ideal">van Laar</label>
+                  </div>
                 </div>
-                <div className="radio-group">
-                  <input type="radio" name="Solucion Real" value="Wilson" />
-                  <label htmlFor="Solucion Ideal">Wilson</label>
-                </div>
-                <div className="radio-group">
-                  <input type="radio" name="Solucion Real" value="van Laar" />
-                  <label htmlFor="Solucion Ideal">van Laar</label>
-                </div>
-              </div>
-            </form>
-          </div>
-          :null            
-          }
+              </form>
+            </div>
+          ) : null}
 
           <div className="six">
             <h2>Fracciones molares</h2>
@@ -126,8 +128,6 @@ class App extends Component{
       </div>
     );
   }
-
-
 }
 
 export default App;
