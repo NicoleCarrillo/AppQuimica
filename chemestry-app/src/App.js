@@ -12,20 +12,27 @@ import { Hidden } from "@material-ui/core";
 
 class App extends Component {
   state = {
+    name: "Temperatura",
     show: true,
   };
 
-  hide() {
+  hide = () => {
     this.setState({
       show: false,
     });
-  }
+  };
 
-  show() {
+  show = () => {
     this.setState({
       show: true,
     });
-  }
+  };
+
+  barChangeHandler = (event) => {
+    this.setState({
+      name: event.target.value,
+    });
+  };
 
   render() {
     return (
@@ -35,14 +42,14 @@ class App extends Component {
         </div>
         <header className="App-header">
           <FaTemperatureLow color="#a56cc1" />
-          <Button name="Temperatura" />
-          <Button name="Presión" />
+          <Button name="Temperatura" onClick={this.barChangeHandler} />
+          <Button name="Presión" onClick={this.barChangeHandler} />
           <FaCloudscale color="#a56cc1" />
         </header>
         <div className="wrapper">
           <div className="one">
             <div className="container">
-              <h2>Temperatura/Presión</h2>
+              <h2>{this.state.name}</h2>
               <div className="hey">
                 <Slider />
               </div>
