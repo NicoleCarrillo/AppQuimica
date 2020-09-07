@@ -1,12 +1,13 @@
 import React, { PureComponent } from "react";
 import {
-  AreaChart,
-  Area,
+  ResponsiveContainer,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  ResponsiveContainer,
+  Legend,
 } from "recharts";
 
 const data = [
@@ -55,13 +56,13 @@ const data = [
 ];
 
 export default class Example extends PureComponent {
-  static jsfiddleUrl = "https://jsfiddle.net/alidingling/7j5bbbum/";
+  static jsfiddleUrl = "https://jsfiddle.net/alidingling/xqjtetw0/";
 
   render() {
     return (
       <div style={{ width: "100%", height: 350 }}>
         <ResponsiveContainer>
-          <AreaChart
+          <LineChart
             data={data}
             margin={{
               top: 0,
@@ -74,13 +75,15 @@ export default class Example extends PureComponent {
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            <Area
+            <Legend />
+            <Line
               type="monotone"
-              dataKey="uv"
+              dataKey="pv"
               stroke="#8884d8"
-              fill="#8884d8"
+              activeDot={{ r: 8 }}
             />
-          </AreaChart>
+            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          </LineChart>
         </ResponsiveContainer>
       </div>
     );
