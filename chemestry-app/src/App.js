@@ -7,6 +7,9 @@ import Slider from "./components/slider";
 import Dark from "./components/darkButton";
 import Component1 from "./components/dropDown1";
 import Component2 from "./components/dropDown2";
+import ModalFL from "./components/modalFL";
+import ModalFG from "./components/modalFG";
+import ModalTP from "./components/modalTP";
 import "./App.css";
 import { Hidden } from "@material-ui/core";
 
@@ -121,13 +124,13 @@ class App extends Component {
             <hr />
             <div className="wrap-fracciones">
               <div>
-                <Button name="Fase líquida" />
+                <ModalFL name="Fase Líquida"/>
               </div>
               <div>
-                <Button name="Fase gaseosa" />
+                <ModalFG name="Fase gaseosa" />
               </div>
               <div>
-                <Button name="Temperatura/Presión" />
+                <ModalTP name="Temperatura/Presión" />
               </div>
             </div>
           </div>
