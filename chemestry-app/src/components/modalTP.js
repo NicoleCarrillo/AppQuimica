@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleModal() {
+export default function SimpleModal(props) {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -44,16 +44,16 @@ export default function SimpleModal() {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id="simple-modal-title">Temperatura/Presion</h2>
+      <h2 id="simple-modal-title">{props.name}</h2>
       <p id="simple-modal-description">
-        Fracciones molares de Temperatura/Presion
+        valores de {props.name}
       </p>
     </div>
   );
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}> Temperatura/Presion
+      <button type="button" onClick={handleOpen}> {props.name}
       </button>
       <Modal
         open={open}
