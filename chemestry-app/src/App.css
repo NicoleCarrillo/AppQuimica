@@ -114,7 +114,7 @@ label {
 
 .cnic {
   display: flex;
-  margin: 5rem 1rem;
+  margin: 1rem 1rem;
   justify-content: center;
 }
 
@@ -168,4 +168,16 @@ label {
   .cnic {
     flex-direction: column;
   }
+}
+
+.nine {
+  grid-column: 2;
+  grid-row: 3;
+  margin-right: -20rem;
+  margin-left: 15rem;
+  margin-top: 8rem;
+}
+
+.h5-align{
+  text-align: left;
 }

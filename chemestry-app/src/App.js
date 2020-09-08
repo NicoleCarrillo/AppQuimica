@@ -134,6 +134,13 @@ class App extends Component {
               </div>
             </div>
           </div>
+          <div className="nine">
+            <h2>Azeótropo</h2>
+            <hr></hr>
+            <h5 className="h5-align">¿Existe?: </h5>
+            <h5 className="h5-align">Coordenadas: </h5>
+            <h5 className="h5-align"> Tipo de Azeótropo: </h5>
+          </div>
         </div>
       </div>
     );
