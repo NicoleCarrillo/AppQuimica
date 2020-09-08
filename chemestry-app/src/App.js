@@ -130,7 +130,7 @@ class App extends Component {
                 <ModalFG name="Fase gaseosa" />
               </div>
               <div>
-                <ModalTP name="Temperatura/Presión" />
+                <ModalTP name={this.state.name} />
               </div>
             </div>
           </div>
