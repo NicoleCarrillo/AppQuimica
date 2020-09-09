@@ -131,6 +131,17 @@ label {
   grid-column: 2;
   grid-row: 1;
 }
+.nine {
+  grid-column: 2;
+  grid-row: 3;
+  margin-right: -20rem;
+  margin-left: 15rem;
+  margin-top: 8rem;
+}
+
+.h5-align {
+  text-align: left;
+}
 .hey {
   margin-top: 3rem;
 }
@@ -162,22 +173,17 @@ label {
   .cnic > div {
     padding: 2rem 0;
   }
+  .nine {
+    margin: auto;
+    width: 100%;
+  }
+  .seven {
+    margin-left: 0;
+  }
 }
 
 @media (max-width: 530px) {
   .cnic {
     flex-direction: column;
   }
-}
-
-.nine {
-  grid-column: 2;
-  grid-row: 3;
-  margin-right: -20rem;
-  margin-left: 15rem;
-  margin-top: 8rem;
-}
-
-.h5-align{
-  text-align: left;
 }
