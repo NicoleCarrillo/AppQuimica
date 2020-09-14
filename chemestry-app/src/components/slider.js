@@ -28,6 +28,7 @@ const useStyles = makeStyles({
   },
 });
 
+
 function valuetext(value) {
   return `${value}°C`;
 }
@@ -79,13 +80,60 @@ const marks = [
   },  
 ];
 
-export default function VerticalSlider() {
-  const classes = useStyles();
+const marksP = [
+  {
+    value: 0,
+    label: '0 mmHg',
+  },
+  {
+    value: 10,
+    label: '10 mmHg',
+  },
+  {
+    value: 20,
+    label: '20 mmHg',
+  },
+  {
+    value: 30,
+    label: '30 mmHg',
+  },
+  {
+    value: 40,
+    label: '40 mmHg',
+  },
+  {
+    value: 50,
+    label: '50 mmHg',
+  },
+  {
+    value: 60,
+    label: '60 mmHg',
+  },
+  {
+    value: 70,
+    label: '70 mmHg',
+  },
+  {
+    value: 80,
+    label: '80 mmHg',
+  },
+  {
+    value: 90,
+    label: '90 mmHg',
+  },
+  {
+    value: 100,
+    label: '1000 mmHg',
+  },
+];
 
+export default function VerticalSlider(props) {
+  const classes = useStyles();
   return (
     <React.Fragment>
       <div className={classes.root}>
-        <Slider
+        {(props.name=="Temperatura")?(
+          <Slider
           valueLabelDisplay="auto"
           orientation="vertical"
           getAriaValueText={valuetext}
@@ -93,7 +141,17 @@ export default function VerticalSlider() {
           defaultValue={20}
           aria-labelledby="vertical-slider"
           marks={marks}
-        />
+          />): null}
+          {(props.name=="Presión")?(
+            <Slider
+            valueLabelDisplay="auto"
+            orientation="vertical"
+            getAriaValueText={valuetext}
+            valueLabelDisplay="on"
+            defaultValue={20}
+            aria-labelledby="vertical-slider"
+            marks={marksP}
+            />) : null}
       </div>
     </React.Fragment>
   );

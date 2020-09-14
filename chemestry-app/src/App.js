@@ -54,7 +54,7 @@ class App extends Component {
             <div className="container">
               <h2>{this.state.name}</h2>
               <div className="hey">
-                <Slider />
+                <Slider name ={this.state.name}/>
               </div>
               <input type="text" />
             </div>
