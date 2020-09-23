@@ -1,7 +1,6 @@
 import React from "react";
 import ModalFL from "../components/modalFL";
 import ModalFG from "../components/modalFG";
-import ModalTP from "../components/modalTP";
 
 const six = (props) => {
   return (
@@ -14,9 +13,6 @@ const six = (props) => {
         </div>
         <div>
           <ModalFG name="Fase gaseosa" />
-        </div>
-        <div>
-          <ModalTP name={props.name} />
         </div>
       </div>
     </div>
