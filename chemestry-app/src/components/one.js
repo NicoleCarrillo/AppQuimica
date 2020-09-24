@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "../components/slider";
+import TextField from "../components/textField"
 
 const one = (props) => {
   return (
@@ -9,7 +10,7 @@ const one = (props) => {
         <div className="hey">
           <Slider name={props.name} />
         </div>
-        <input type="text" />
+        <TextField name={props.name}/>
       </div>
     </div>
   );
