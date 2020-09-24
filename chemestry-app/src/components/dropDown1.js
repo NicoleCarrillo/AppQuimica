@@ -27,30 +27,37 @@ export default function SimpleSelect() {
     <div>
       <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel id="demo-simple-select-outlined-label">
-          Componente 1
+          Sistemas
         </InputLabel>
         <Select
           labelId="demo-simple-select-outlined-label"
           id="demo-simple-select-outlined"
           value={componente}
           onChange={handleChange}
-          label="Componente 1 "
+          label="Sistemas"
         >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={1}>Acetona</MenuItem>
-          <MenuItem value={2}>Tetracloruro de Carbono</MenuItem>
-          <MenuItem value={3}>Cloroformo</MenuItem>
-          <MenuItem value={4}>Etanol</MenuItem>
-          <MenuItem value={5}>Acetado de etilo</MenuItem>
-          <MenuItem value={6}>Acetato de metilo</MenuItem>
-          <MenuItem value={7}>Metanol</MenuItem>
-          <MenuItem value={8}>N-Hexano</MenuItem>
-          <MenuItem value={9}>1-Propanol</MenuItem>
-          <MenuItem value={10}>2-Propanol</MenuItem>
-          <MenuItem value={11}>TetraHidroFurano</MenuItem>
-          <MenuItem value={12}>Agua</MenuItem>
+          <MenuItem value={1}>Acetona - Cloroformo</MenuItem>
+          <MenuItem value={1}>Acetona - Metanol</MenuItem>
+          <MenuItem value={1}>Acetona - Agua</MenuItem>
+          <MenuItem value={2}>Tetracloruro de Carbono - Benceno</MenuItem>
+          <MenuItem value={3}>Cloroformo - Metanol</MenuItem>
+          <MenuItem value={4}>Etanol - Benceno</MenuItem>
+          <MenuItem value={4}>Etanol - Agua</MenuItem>
+          <MenuItem value={5}>Acetado de etilo - Etanol</MenuItem>
+          <MenuItem value={8}>N-Hexano - Etanol</MenuItem>
+          <MenuItem value={7}>Metanol - Benceno</MenuItem>
+          <MenuItem value={7}>Metanol - Acetato de etilo</MenuItem>
+          <MenuItem value={7}>Metanol - Agua</MenuItem>
+          <MenuItem value={6}>Acetato de metilo - Metanol</MenuItem>
+          <MenuItem value={9}>1-Propanol - Agua</MenuItem>
+          <MenuItem value={10}>2-Propanol - Agua</MenuItem>
+          <MenuItem value={11}>TetraHidroFurano - Agua</MenuItem>
+          <MenuItem value={12}>Agua - Ácido acético</MenuItem>
+          <MenuItem value={12}>Agua - 1-Butanol</MenuItem>
+          <MenuItem value={12}>Agua - Ácido fórmico</MenuItem>
         </Select>
       </FormControl>
     </div>
