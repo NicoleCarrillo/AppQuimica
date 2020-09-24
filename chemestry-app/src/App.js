@@ -28,9 +28,15 @@ class App extends Component {
   };
 
   barChangeHandler = (event) => {
-    this.setState({
-      name: event.target.value,
-    });
+    if(event.target.value=="Temperatura"){
+      this.setState({
+        name:"Presión",
+      });
+    } else {
+      this.setState({
+        name:"Temperatura",
+      });
+    }
   };
 
   render() {
