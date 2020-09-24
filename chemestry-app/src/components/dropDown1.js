@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
+    backgroundColor: '#e7e7e7',
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -35,6 +36,11 @@ export default function SimpleSelect() {
           value={componente}
           onChange={handleChange}
           label="Sistemas"
+          InputProps={{
+            classes: {
+                input: classes.multilineColor
+            }
+        }}
         >
           <MenuItem value="">
             <em>None</em>
