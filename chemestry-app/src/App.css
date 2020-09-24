@@ -65,6 +65,7 @@
   grid-column: 2 / 4;
   grid-row: 1 / 4;
   padding-left: 0 !important;
+  margin-bottom: 5rem;
 }
 
 .six {
@@ -126,6 +127,7 @@ label {
 
 .cnic > div {
   padding: 0 3rem;
+  margin-top: 2rem;
 }
 
 .seven {
