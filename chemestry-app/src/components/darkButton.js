@@ -27,7 +27,7 @@ export default function CustomizedSwitches() {
   });
 
   const handleChange = (event) => {
-    if (controlador == 1) {
+    if (controlador === 1) {
       setState(
         { ...state, [event.target.name]: event.target.checked },
         (document.body.style.backgroundColor = "#3f3f3f")

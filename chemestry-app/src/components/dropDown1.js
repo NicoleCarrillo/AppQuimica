@@ -4,15 +4,15 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import margules from "../clases/margules"
+import margules from "../clases/margules";
 
-const objetoMargules =new margules();
+const objetoMargules = new margules();
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
-    backgroundColor: '#e7e7e7',
+    backgroundColor: "#e7e7e7",
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SimpleSelect() {
   const classes = useStyles();
   const [componente, setComponent] = React.useState("");
- 
+
   const handleChange = (event) => {
     setComponent(event.target.value);
     var x = event.target.value;
@@ -34,19 +34,16 @@ export default function SimpleSelect() {
       case 2:
         console.log(objetoMargules.acetonaMetanol);
         break;
-      
+
       default:
         break;
     }
   };
 
-
   return (
     <div>
       <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel id="demo-simple-select-outlined-label">
-          Sistemas
-        </InputLabel>
+        <InputLabel id="demo-simple-select-outlined-label">Sistemas</InputLabel>
         <Select
           labelId="demo-simple-select-outlined-label"
           id="menu"
@@ -55,12 +52,12 @@ export default function SimpleSelect() {
           label="Sistemas"
           InputProps={{
             classes: {
-                input: classes.multilineColor
-            }
-        }}
+              input: classes.multilineColor,
+            },
+          }}
         >
           <MenuItem value="">
-          <em>None</em>
+            <em>None</em>
           </MenuItem>
           <MenuItem value={1}>Acetona - Cloroformo</MenuItem>
           <MenuItem value={2}>Acetona - Metanol</MenuItem>
@@ -81,9 +78,8 @@ export default function SimpleSelect() {
           <MenuItem value={17}>Agua - Ácido acético</MenuItem>
           <MenuItem value={18}>Agua - 1-Butanol</MenuItem>
           <MenuItem value={19}>Agua - Ácido fórmico</MenuItem>
-        </Select>          
+        </Select>
       </FormControl>
-      
     </div>
   );
 }

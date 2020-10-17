@@ -28,13 +28,13 @@ class App extends Component {
   };
 
   barChangeHandler = (event) => {
-    if(event.target.value=="Temperatura"){
+    if (event.target.value === "Temperatura") {
       this.setState({
-        name:"Presión",
+        name: "Presión",
       });
     } else {
       this.setState({
-        name:"Temperatura",
+        name: "Temperatura",
       });
     }
   };
