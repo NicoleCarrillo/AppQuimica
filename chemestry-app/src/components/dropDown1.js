@@ -4,6 +4,9 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import margules from "../clases/margules"
+
+const objetoMargules =new margules();
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -19,10 +22,24 @@ const useStyles = makeStyles((theme) => ({
 export default function SimpleSelect() {
   const classes = useStyles();
   const [componente, setComponent] = React.useState("");
-
+ 
   const handleChange = (event) => {
     setComponent(event.target.value);
+    var x = event.target.value;
+    console.log("hey");
+    switch (x) {
+      case 1:
+        console.log(objetoMargules.acetonaCloroformo);
+        break;
+      case 2:
+        console.log(objetoMargules.acetonaMetanol);
+        break;
+      
+      default:
+        break;
+    }
   };
+
 
   return (
     <div>
@@ -32,7 +49,7 @@ export default function SimpleSelect() {
         </InputLabel>
         <Select
           labelId="demo-simple-select-outlined-label"
-          id="demo-simple-select-outlined"
+          id="menu"
           value={componente}
           onChange={handleChange}
           label="Sistemas"
@@ -43,29 +60,30 @@ export default function SimpleSelect() {
         }}
         >
           <MenuItem value="">
-            <em>None</em>
+          <em>None</em>
           </MenuItem>
           <MenuItem value={1}>Acetona - Cloroformo</MenuItem>
-          <MenuItem value={1}>Acetona - Metanol</MenuItem>
-          <MenuItem value={1}>Acetona - Agua</MenuItem>
-          <MenuItem value={2}>Tetracloruro de Carbono - Benceno</MenuItem>
-          <MenuItem value={3}>Cloroformo - Metanol</MenuItem>
-          <MenuItem value={4}>Etanol - Benceno</MenuItem>
-          <MenuItem value={4}>Etanol - Agua</MenuItem>
-          <MenuItem value={5}>Acetado de etilo - Etanol</MenuItem>
-          <MenuItem value={8}>N-Hexano - Etanol</MenuItem>
-          <MenuItem value={7}>Metanol - Benceno</MenuItem>
-          <MenuItem value={7}>Metanol - Acetato de etilo</MenuItem>
-          <MenuItem value={7}>Metanol - Agua</MenuItem>
-          <MenuItem value={6}>Acetato de metilo - Metanol</MenuItem>
-          <MenuItem value={9}>1-Propanol - Agua</MenuItem>
-          <MenuItem value={10}>2-Propanol - Agua</MenuItem>
-          <MenuItem value={11}>TetraHidroFurano - Agua</MenuItem>
-          <MenuItem value={12}>Agua - Ácido acético</MenuItem>
-          <MenuItem value={12}>Agua - 1-Butanol</MenuItem>
-          <MenuItem value={12}>Agua - Ácido fórmico</MenuItem>
-        </Select>
+          <MenuItem value={2}>Acetona - Metanol</MenuItem>
+          <MenuItem value={3}>Acetona - Agua</MenuItem>
+          <MenuItem value={4}>Tetracloruro de Carbono - Benceno</MenuItem>
+          <MenuItem value={5}>Cloroformo - Metanol</MenuItem>
+          <MenuItem value={6}>Etanol - Benceno</MenuItem>
+          <MenuItem value={7}>Etanol - Agua</MenuItem>
+          <MenuItem value={8}>Acetado de etilo - Etanol</MenuItem>
+          <MenuItem value={9}>N-Hexano - Etanol</MenuItem>
+          <MenuItem value={10}>Metanol - Benceno</MenuItem>
+          <MenuItem value={11}>Metanol - Acetato de etilo</MenuItem>
+          <MenuItem value={12}>Metanol - Agua</MenuItem>
+          <MenuItem value={13}>Acetato de metilo - Metanol</MenuItem>
+          <MenuItem value={14}>1-Propanol - Agua</MenuItem>
+          <MenuItem value={15}>2-Propanol - Agua</MenuItem>
+          <MenuItem value={16}>TetraHidroFurano - Agua</MenuItem>
+          <MenuItem value={17}>Agua - Ácido acético</MenuItem>
+          <MenuItem value={18}>Agua - 1-Butanol</MenuItem>
+          <MenuItem value={19}>Agua - Ácido fórmico</MenuItem>
+        </Select>          
       </FormControl>
+      
     </div>
   );
 }
