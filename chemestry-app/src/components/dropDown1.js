@@ -50,7 +50,7 @@ export default function SimpleSelect() {
           value={componente}
           onChange={handleChange}
           label="Sistemas"
-          InputProps={{
+          inputProps={{
             classes: {
               input: classes.multilineColor,
             },
