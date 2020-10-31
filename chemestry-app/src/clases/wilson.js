@@ -1,5 +1,6 @@
 export default class wilson {
   //SISTEMA -> LAMNDA12-LAMBDA11  LAMNDA21-LAMBDA22   MM1     MM2     GE1     GE2
+
   acetonaCloroformo = (116.1171, -506.8519, 44.05, 119.39, 0.783, 1.489);
   acetonaMetanol = (-114.4047, 545.2942, 44.05, 32.04, 0.783, 0.792);
   acetonaAgua = (344.3346, 1482.2133, 44.05, 18.016, 0.783, 1);

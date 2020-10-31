@@ -6,8 +6,6 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import margules from "../clases/margules";
 
-const objetoMargules = new margules();
-
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -29,10 +27,10 @@ export default function SimpleSelect() {
     console.log("hey");
     switch (x) {
       case 1:
-        console.log(objetoMargules.acetonaCloroformo);
+        console.log(margules.acetonaCloroformo);
         break;
       case 2:
-        console.log(objetoMargules.acetonaMetanol);
+        console.log(margules.acetonaMetanol);
         break;
 
       default:
