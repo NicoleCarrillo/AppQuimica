@@ -11,8 +11,8 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    name: "Temperatura",
-    show: true,
+    name: "Temperatura/Presión",
+    show: false,
   };
 
   hide = () => {

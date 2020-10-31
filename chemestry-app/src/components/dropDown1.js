@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleSelect() {
   const classes = useStyles();
-  const [componente, setComponent] = React.useState("");
+  const [componente, setComponent] = React.useState("1");
 
   const handleChange = (event) => {
     setComponent(event.target.value);
