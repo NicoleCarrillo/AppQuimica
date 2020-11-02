@@ -1,4 +1,9 @@
 import React from "react";
+import obj from "../clases/metodos";
+
+function invocador(){
+  obj.orquestador(0);
+}
 
 const three = (props) => {
   return (

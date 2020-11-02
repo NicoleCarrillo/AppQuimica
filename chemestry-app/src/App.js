@@ -7,6 +7,7 @@ import Three from "./components/three";
 import Four from "./components/four";
 import Six from "./components/six";
 import Nine from "./components/nine";
+import obj from "./clases/metodos";
 import "./App.css";
 
 class App extends Component {
@@ -40,6 +41,7 @@ class App extends Component {
   };
 
   render() {
+    //console.log(obj.imprimir());
     return (
       <div className="App">
         <div className="dark">
