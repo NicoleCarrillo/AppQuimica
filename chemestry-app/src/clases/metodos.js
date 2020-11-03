@@ -79,6 +79,76 @@ function sitemaIdeal(){
         imprimir:imprimir,//*ASI INVOCAS METODOS EN JAVASCRIPT -> NICOLE
         orquestador:orquestador,
     };
+    let promt1,
+  promt2,
+  tipo_variable,
+  tipo_solucion,
+  T,
+  Peb1,
+  Peb2,
+  xa,
+  xb,
+  Psup,
+  T_general=objeto.t_general(),
+  Respuesta;
+
+if (tipo_solucion == 0) {
+  promt1 = "Con temperatura ctte = 1 o Presión ctte = 0";
+  tipo_variable = prompt(promt1);
+}
+
+if (tipo_variable == 1) {
+  let j;
+
+  promt2 = "Introduce la temperatura °C";
+  T = prompt(promt2);
+
+  // Calculo de las presiones de las soluciones
+  // Presión de la especie 1
+  Peb1 = Math.pow(
+    10,
+    (objeto.c_antoine1[1] - objeto.c_antonie1[2]) / (objeto.c_antonie1[3] + T)
+  );
+
+  // Presión de la especie 2
+
+  Peb2 = Math.pow(
+    10,
+    (objeto.c_antonie2[1] - objeto.c_antonie2[2]) / (objeto.c_antonie2[3] + T)
+  );
+
+  for (j = 1; j < objeto.n; j++) {
+    xa = Peb1 * 0.2;
+    xb = Peb2 * 1.8;
+    Psup = (xa + xb) / 2;
+    T_general[j][8] = 0;
+    while (Math.abs(T_general[j][8] - 1) > 0.001) {
+      Psup = (xa + xb) / 2;
+      T_general[j][4] = (T_general[j][2] * Peb1) / Psup; //Calculo de y2
+      T_general[j][7] = (T_general[j][5] * Peb2) / Psup; //Calculo de y2
+      T_general[j][8] = T_general[j][4] + T_general[j][7];
+
+      if (T_general[j][8] > 1) {
+        xa = Psup;
+      } else {
+        xb = Psup;
+      }
+    }
+    T_general[j][1] = Psup;
+
+    T_general[j][3] =
+      objeto.c_antonie1[2] / objeto.c_antonie1[1] -
+      Math.log(T_general[j][1]) -
+      objeto.c_antonie1[3];
+
+    T_general[j][6] =
+      objeto.c_antonie2[2] / objeto.c_antonie2[1] -
+      Math.log(T_general[j][1]) -
+      objeto.c_antonie2[3];
+  }
+}
+
+
     return objeto;
 }
 const objeto=sitemaIdeal();
