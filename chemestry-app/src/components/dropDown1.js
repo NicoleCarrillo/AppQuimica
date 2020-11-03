@@ -5,6 +5,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import margules from "../clases/margules";
+import obj from "../clases/metodos";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -22,6 +23,7 @@ export default function SimpleSelect() {
   const [componente, setComponent] = React.useState("1");
 
   const handleChange = (event) => {
+    console.log(obj.orquestador(0));
     setComponent(event.target.value);
     var x = event.target.value;
     console.log("hey");

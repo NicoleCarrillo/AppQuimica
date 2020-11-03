@@ -18,6 +18,7 @@ const three = (props) => {
               name="Solucion"
               value="Solucion Real"
               onClick={props.onClickShow}
+             // onClick={props.onClickIdeal}
             />
             <label htmlFor="Solucion Real">Solución Real</label>
           </div>
@@ -27,6 +28,7 @@ const three = (props) => {
               name="Solucion"
               value="Solucion Ideal"
               onClick={props.onClickHide}
+              //onClick={props.onClickIdeal}
             />
             <label htmlFor="Solucion Ideal">Solución Ideal</label>
           </div>

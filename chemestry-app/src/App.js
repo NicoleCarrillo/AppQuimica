@@ -17,15 +17,21 @@ class App extends Component {
   };
 
   hide = () => {
+    obj.orquestador(0);
     this.setState({
       show: false,
     });
   };
 
   show = () => {
+    obj.orquestador(0);
     this.setState({
       show: true,
     });
+  };
+
+  clickIdeal = () => {
+    obj.orquestador(0);
   };
 
   barChangeHandler = (event) => {
@@ -41,7 +47,7 @@ class App extends Component {
   };
 
   render() {
-    //console.log(obj.imprimir());
+    console.log(obj.orquestador(0));
     return (
       <div className="App">
         <div className="dark">
@@ -54,6 +60,7 @@ class App extends Component {
           <Three
             onClickShow={() => this.show()}
             onClickHide={() => this.hide()}
+            //onClickIdeal={() => this.clickIdeal()}
           />
           {this.state.show ? <Four /> : null}
           <Six name={this.state.name} />
