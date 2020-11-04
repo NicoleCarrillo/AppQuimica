@@ -1,9 +1,5 @@
 import React from "react";
-import obj from "../clases/metodos";
 
-// function clickIdeal(tipo){
-//   console.log(obj.orquestador(tipo,"","","",""));
-// }
 const three = (props) => {
   return (
     <div className="three">
@@ -17,7 +13,6 @@ const three = (props) => {
               name="Solucion"
               value="Solucion Real"
               onClick={props.onClickShow}
-              //onClick={clickIdeal(1)}
             />
             <label htmlFor="Solucion Real">Solución Real</label>
           </div>
@@ -27,7 +22,6 @@ const three = (props) => {
               name="Solucion"
               value="Solucion Ideal"
               onClick={props.onClickHide}
-              //onClick={clickIdeal(0)}
             />
             <label htmlFor="Solucion Ideal">Solución Ideal</label>
           </div>

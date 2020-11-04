@@ -10,9 +10,6 @@ import Nine from "./components/nine";
 import obj from "./clases/metodos";
 import "./App.css";
 
-function clickIdeal2(tipo){
-  console.log(obj.orquestador(tipo,"","","",""));
-};
 
 class App extends Component {
   state = {
@@ -39,12 +36,10 @@ class App extends Component {
 
   barChangeHandler = (event) => {
     if (event.target.value === "Temperatura") {
-      //this.clickIdeal("temperatura","presion")
       this.setState({
         name: "Presión",
       });
     } else {
-      //this.clickIdeal("presion","temperatura")
       this.setState({
         name: "Temperatura",
       });

@@ -5,47 +5,35 @@ var nombreSis1,nombreSis2,nombreVar,nombreConst;
 
 function orquestador(tipo,nombreSistema1,nombreSistema2,variable,constante){
     
-    if(nombreSis1 === undefined){
-        if(nombreSistema1===""){
-            nombreSis1="acetona";
-        }else{
-            nombreSis1=nombreSistema1; 
-        }
+    if(nombreSis1 === undefined){       //~EVALUA EL PRIMER MOMENTO DEL CODIGO CUANDO SE ABRE LA APLICACION 
+        nombreSis1 = "acetona";           //~ MODO DEFAULT
     }else{
-        if(nombreSistema1===""){
-            nombreSis1="acetona";
-        }else{
-            nombreSis1=nombreSistema1; 
+        if(nombreSistema1 !== ""){
+            nombreSis1 = nombreSistema1; 
         }
     }
 
     if(nombreSis2 === undefined){
-        if(nombreSistema2===""){
-            nombreSis2="cloroformo";
-        }else{
-            nombreSis2=nombreSistema2; 
-        }
+        nombreSis2 = "cloroformo";
     }else{
-        if(nombreSistema2===""){
-            nombreSis2="cloroformo";
-        }else{
-            nombreSis2=nombreSistema2; 
+        if(nombreSistema2 !== ""){
+            nombreSis2 = nombreSistema2; 
         }
     }
     
     if(nombreVar === undefined){
-        nombreVar="presion";
+        nombreVar = "presion";
     }else{
-        if(variable!=""){
-            nombreVar=variable; 
+        if(variable != ""){
+            nombreVar = variable; 
         }
     }
     
     if(nombreConst === undefined){
-        nombreConst="temperatura";
+        nombreConst = "temperatura";
     }else{
         if(constante !== ""){
-            nombreConst=constante; 
+            nombreConst = constante; 
         }
     }
     
