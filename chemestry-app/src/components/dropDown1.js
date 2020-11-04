@@ -20,18 +20,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleSelect() {
   const classes = useStyles();
-  const [componente, setComponent] = React.useState("1");
+  const [componente, setComponent] = React.useState("0");
 
   const handleChange = (event) => {
-    console.log(obj.orquestador(0));
     setComponent(event.target.value);
     var x = event.target.value;
-    console.log("hey");
     switch (x) {
       case 1:
+        console.log(obj.orquestador(0,"acetona","cloroformo","",""));
         console.log(margules.acetonaCloroformo);
         break;
       case 2:
+        console.log(obj.orquestador(0,"acetona","metanol","",""));
         console.log(margules.acetonaMetanol);
         break;
 

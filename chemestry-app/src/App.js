@@ -10,6 +10,10 @@ import Nine from "./components/nine";
 import obj from "./clases/metodos";
 import "./App.css";
 
+function clickIdeal2(tipo){
+  console.log(obj.orquestador(tipo,"","","",""));
+};
+
 class App extends Component {
   state = {
     name: "Temperatura/Presión",
@@ -17,29 +21,30 @@ class App extends Component {
   };
 
   hide = () => {
-    obj.orquestador(0);
     this.setState({
       show: false,
     });
   };
 
   show = () => {
-    obj.orquestador(0);
     this.setState({
       show: true,
     });
   };
 
-  clickIdeal = () => {
-    obj.orquestador(0);
+  clickIdeal=(variable,constante)=>{
+    console.log(obj.orquestador(0,"","",variable,constante));
   };
+
 
   barChangeHandler = (event) => {
     if (event.target.value === "Temperatura") {
+      //this.clickIdeal("temperatura","presion")
       this.setState({
         name: "Presión",
       });
     } else {
+      //this.clickIdeal("presion","temperatura")
       this.setState({
         name: "Temperatura",
       });
@@ -47,7 +52,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(obj.orquestador(0));
     return (
       <div className="App">
         <div className="dark">
@@ -60,7 +64,6 @@ class App extends Component {
           <Three
             onClickShow={() => this.show()}
             onClickHide={() => this.hide()}
-            //onClickIdeal={() => this.clickIdeal()}
           />
           {this.state.show ? <Four /> : null}
           <Six name={this.state.name} />

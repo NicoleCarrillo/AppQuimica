@@ -8,7 +8,7 @@ const Header = (props) => {
     <div>
       <header className="App-header">
         <FaTemperatureLow color="#a56cc1" />
-        <Button name="Temperatura" onClick={props.onClick} />
+        <Button name="Temperatura" onClick={props.onClick}/>
         <Button name="Presión" onClick={props.onClick} />
         <FaCloudscale color="#a56cc1" />
       </header>
