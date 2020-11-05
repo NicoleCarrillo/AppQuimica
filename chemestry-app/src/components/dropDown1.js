@@ -27,11 +27,11 @@ export default function SimpleSelect() {
     var x = event.target.value;
     switch (x) {
       case 1:
-        console.log(obj.orquestador(0,"acetona","cloroformo","","")); //! ESTO LO DEJAMOS ASI O LO MODIFICAMOS?????
+        console.log(obj.orquestador(0,"acetona","cloroformo","","","")); //! ESTO LO DEJAMOS ASI O LO MODIFICAMOS?????
         console.log(margules.acetonaCloroformo);
         break;
       case 2:
-        console.log(obj.orquestador(0,"acetona","metanol","",""));
+        console.log(obj.orquestador(0,"acetona","metanol","","",""));
         console.log(margules.acetonaMetanol);
         break;
 

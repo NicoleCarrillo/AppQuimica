@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 
 function valuetext(value) {
   if(value!=valor){
-    console.log(obj.orquestador(0,value,"",variable,constante));
+    console.log(obj.orquestador(0,"","",variable,constante,value));
     valor=value;
   }
   return `${value}°C`;

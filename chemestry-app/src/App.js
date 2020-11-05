@@ -30,7 +30,7 @@ class App extends Component {
   };
 
   clickIdeal=(variable,constante)=>{
-    console.log(obj.orquestador(0,"","",variable,constante));
+    console.log(obj.orquestador(0,"","",variable,constante,""));
   };
 
 

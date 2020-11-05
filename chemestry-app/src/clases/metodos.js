@@ -1,9 +1,9 @@
 import OBJETOConstantesAntoine from "../clases/constantesAntoine";
 
 const OBJETO = sitemaIdeal();
-var nombreSis1,nombreSis2,nombreVar,nombreConst;
+var nombreSis1,nombreSis2,nombreVar,nombreConst,nombreGrado;
 
-function orquestador(tipo,nombreSistema1,nombreSistema2,variable,constante){
+function orquestador(tipo,nombreSistema1,nombreSistema2,variable,constante,grado){
     
     if(nombreSis1 === undefined){       //~EVALUA EL PRIMER MOMENTO DEL CODIGO CUANDO SE ABRE LA APLICACION 
         nombreSis1 = "acetona";           //~ MODO DEFAULT
@@ -22,7 +22,7 @@ function orquestador(tipo,nombreSistema1,nombreSistema2,variable,constante){
     }
     
     if(nombreVar === undefined){
-        nombreVar = "presion";
+        nombreVar = "Presion";
     }else{
         if(variable != ""){
             nombreVar = variable; 
@@ -30,10 +30,18 @@ function orquestador(tipo,nombreSistema1,nombreSistema2,variable,constante){
     }
     
     if(nombreConst === undefined){
-        nombreConst = "temperatura";
+        nombreConst = "Temperatura";
     }else{
         if(constante !== ""){
             nombreConst = constante; 
+        }
+    }
+
+    if(nombreGrado === undefined){
+        nombreGrado= 20;
+    }else{
+        if(constante !== ""){
+            nombreGrado = grado; 
         }
     }
     
@@ -53,9 +61,10 @@ function sitemaIdeal(){
         name1: nombreSis1,
         name2: nombreSis2,
         variable:nombreVar,
+        nic:nombreGrado,
+        n:11,
         c_antoine1: OBJETOConstantesAntoine.acetona, //!!!!CAMBIAR VALORES
         c_antoine2: OBJETOConstantesAntoine.cloroformo,
-        n:11,
         x1: function(){
             var arreglo = [0], valorInicio = 0;
             while(valorInicio < 1){
@@ -90,89 +99,78 @@ function sitemaIdeal(){
         //*ASI INVOCAS METODOS EN JAVASCRIPT -> NICOLE
         orquestador: orquestador,
     };
-let promt1,
-  promt2,
-  promptPresion,
-  tipo_variable,
-  tipo_solucion,
-  T,
-  p,
-  Peb1,
-  Peb2,
-  xa,
-  xb,
-  Psup,
-  tSup,
-  T_general = OBJETO.t_general(),
-  Respuesta;
+    let t,
+    p,
+    promptPresion,
+    peb1,
+    peb2,
+    xa,
+    xb,
+    psup,
+    tSup,
+    T_general = OBJETO.t_general(),
+    n=11,
+    respuesta;
 
-if (tipo_solucion === 0) { //!ANALIZAR QUE SE VA A QUITAR 
-  promt1 = "Con temperatura ctte = 1 o Presión ctte = 0";
-  tipo_variable = prompt(promt1);//!!Modificar
-}
-
-//& SISTEMA IDEAL TEMPERATURA CONSTANTE
-if (tipo_variable === 1) {
-  let j;
-  promt2 = "Introduce la temperatura °C";
-  T = prompt(promt2);//!!! Modificar
-  //~ CALCULO DE LAS PRESIONES DE LAS SOLUCIONES
-  //^ PRESION DE LA ESPECIE 1
-  Peb1 = Math.pow(10,(OBJETO.c_antoine1[0] - OBJETO.c_antonie1[1]) / (OBJETO.c_antonie1[2] + T));
-  //^ PRESION DE LA ESPECIE 2
-  Peb2 = Math.pow(10,(OBJETO.c_antonie2[0] - OBJETO.c_antonie2[1]) / (OBJETO.c_antonie2[2] + T));
-  for(j = 0; j < OBJETO.n; j++){
-    xa = Peb1 * 0.2;
-    xb = Peb2 * 1.8;
-    Psup = (xa + xb) / 2;
-    T_general[j][7] = 0;
-    while(Math.abs(T_general[j][7] - 1) > 0.001){
-      Psup = (xa + xb) / 2;
-      T_general[j][3] = (T_general[j][1] * Peb1) / Psup; //*Calculo de y2
-      T_general[j][6] = (T_general[j][4] * Peb2) / Psup; //*Calculo de y2
-      T_general[j][7] = T_general[j][3] + T_general[j][6];
-      if (T_general[j][7] > 1) {
-        xa = Psup;
-      } else {
-        xb = Psup;
-      } 
-    }
-    T_general[j][0] = Psup;
-    T_general[j][2] = OBJETO.c_antonie1[2] / OBJETO.c_antonie1[1] - Math.log(T_general[j][0]) - OBJETO.c_antonie1[3];
-    T_general[j][5] = OBJETO.c_antonie2[2] / OBJETO.c_antonie2[1] - Math.log(T_general[j][0]) - OBJETO.c_antonie2[3];
-  }
-}
-
-//& SISTEMA IDEAL PRESION CONSTANTE
-if (tipo_variable === 0){
-    promptPresion="Introduce la presion en mmHg";
-    p=prompt(promptPresion);//!!Modificar
-    
-    //* CALCULO DE TEMPERATURAS
-    T_general[OBJETO.n][0] = (OBJETO.c_antoine1[1] / OBJETO.c_antoine1[0] - Math.log10(p)) - OBJETO.c_antoine1[2];
-    T_general[0][0] = (OBJETO.c_antoine2[1] / OBJETO.c_antoine2[0] - Math.log10(p)) - OBJETO.c_antoine2[2];
-    for(var i=0; i<OBJETO.n;i++){
-        //^ PARA QUE LA TEMPERATURA SE AJUSTE
-        xa = T_general[OBJETO.n][0] * 0.2;        //^TEMPERATURA BAJA
-        xb = T_general[0][0] * 1.8;               //^TEMPERATURA ALTA
-        tSup = (xa/xb)/2;
-        T_general[i][7]=0;
-        while(Math.abs(T_general[i][7]-1)>0.001){
-            tSup=(xa+xb)/2; //*Temperatura de suposicion del sisteme en °C
-            T_general=[i][2]=Math.pow(10, OBJETO.c_antoine1[0] - OBJETO.c_antoine1[1] / (OBJETO.c_antoine1[2]) + tSup);//*Presiones de saturación especie 1
-            T_general=[i][2]=Math.pow(10, OBJETO.c_antoine1[0] - OBJETO.c_antoine1[1] / (OBJETO.c_antoine1[2]) + tSup);//*Presiones de saturación especie 2
-            T_general[i][3]=T_general[i][1] * T_general[i][2] / p;      //*Calculo de y1
-            T_general[i][6]=T_general[i][4] * T_general[i][5] / p;      //*Calculo de y2
-            T_general[i][7]=T_general[i][3] + T_general[i][6];
-            if(T_general[i][3]>1){
-                xb=tSup;
-            } else {
-                xa=tSup;
+    //& SISTEMA IDEAL PRESION CONSTANTE
+    if(nombreConst === "Presion"){
+        let j;
+        t = nombreGrado;
+        //~ CALCULO DE LAS PRESIONES DE LAS SOLUCIONES
+        //^ PRESION DE LA ESPECIE 1
+        peb1 = Math.pow(10,(OBJETO.c_antoine1[0] - OBJETO.c_antonie1[1]) / (OBJETO.c_antonie1[2] + t));
+        //^ PRESION DE LA ESPECIE 2
+        peb2 = Math.pow(10,(OBJETO.c_antonie2[0] - OBJETO.c_antonie2[1]) / (OBJETO.c_antonie2[2] + t));
+        for(j = 0; j < OBJETO.n; j++){
+            xa = peb1 * 0.2;
+            xb = peb2 * 1.8;
+            psup = (xa + xb) / 2;
+            T_general[j][7] = 0;
+            while(Math.abs(T_general[j][7] - 1) > 0.001){
+                psup = (xa + xb) / 2;
+                T_general[j][3] = (T_general[j][1] * peb1) / psup; //*Calculo de y2
+                T_general[j][6] = (T_general[j][4] * peb2) / psup; //*Calculo de y2
+                T_general[j][7] = T_general[j][3] + T_general[j][6];
+                if (T_general[j][7] > 1) {
+                    xa = psup;
+                } else {
+                    xb = psup;
+                } 
             }
+            T_general[j][0] = psup;
+            T_general[j][2] = OBJETO.c_antonie1[2] / OBJETO.c_antonie1[1] - Math.log(T_general[j][0]) - OBJETO.c_antonie1[3];
+            T_general[j][5] = OBJETO.c_antonie2[2] / OBJETO.c_antonie2[1] - Math.log(T_general[j][0]) - OBJETO.c_antonie2[3];
         }
-        T_general[1][0]=tSup;
     }
-}
+
+    ////& SISTEMA IDEAL TEMPERATURA CONSTANTE
+   if (nombreConst === "Temperatura"){
+         p=nombreGrado;
+        T_general[11][0] = (OBJETO.c_antoine1[1] / OBJETO.c_antoine1[0] - Math.log10(p)) - OBJETO.c_antoine1[2];
+        T_general[0][0] = (OBJETO.c_antoine2[1] / OBJETO.c_antoine2[0] - Math.log10(p)) - OBJETO.c_antoine2[2];
+        for(var i=0; i<n;i++){
+            //^ PARA QUE LA TEMPERATURA SE AJUSTE
+            xa = T_general[n][0] * 0.2;               //^TEMPERATURA BAJA
+            xb = T_general[0][0] * 1.8;               //^TEMPERATURA ALTA
+            tSup = (xa/xb)/2;
+            T_general[i][7]=0;
+            while(Math.abs(T_general[i][7]-1)>0.001){
+                tSup=(xa+xb)/2; //Temperatura de suposicion del sisteme en °C
+                T_general=[i][2]=Math.pow(10, OBJETO.c_antoine1[0] - OBJETO.c_antoine1[1] / (OBJETO.c_antoine1[2]) + tSup);//Presiones de saturación especie 1
+                T_general=[i][2]=Math.pow(10, OBJETO.c_antoine1[0] - OBJETO.c_antoine1[1] / (OBJETO.c_antoine1[2]) + tSup);//*Presiones de saturación especie 2
+                T_general[i][3]=T_general[i][1] * T_general[i][2] / p;      //*Calculo de y1
+                T_general[i][6]=T_general[i][4] * T_general[i][5] / p;      //*Calculo de y2
+                T_general[i][7]=T_general[i][3] + T_general[i][6];
+                if(T_general[i][3]>1){
+                    xb=tSup;
+                } else {
+                    xa=tSup;
+                }
+            }
+            T_general[1][0]=tSup;
+        }
+    }
+
     return OBJETO;
 }
 
