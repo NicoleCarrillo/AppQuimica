@@ -2,6 +2,7 @@ import OBJETOConstantesAntoine from "../clases/constantesAntoine";
 
 const OBJETO = sitemaIdeal();
 var nombreSis1,nombreSis2,nombreVar,nombreConst,nombreGrado;
+const  n=11;
 
 function orquestador(tipo,nombreSistema1,nombreSistema2,variable,constante,grado){
     
@@ -99,17 +100,10 @@ function sitemaIdeal(){
         //*ASI INVOCAS METODOS EN JAVASCRIPT -> NICOLE
         orquestador: orquestador,
     };
-    let t,
-    p,
-    promptPresion,
-    peb1,
-    peb2,
-    xa,
-    xb,
-    psup,
-    tSup,
-    T_general = OBJETO.t_general(),
-    n=11,
+    let t,p,peb1,peb2,xa,xb,psup,tSup,
+    x1 = x1function(11),
+    x2 = x2function(11),
+    T_general = t_general(x1,x2,11),
     respuesta;
 
     //& SISTEMA IDEAL PRESION CONSTANTE
@@ -121,7 +115,7 @@ function sitemaIdeal(){
         peb1 = Math.pow(10,(OBJETO.c_antoine1[0] - OBJETO.c_antonie1[1]) / (OBJETO.c_antonie1[2] + t));
         //^ PRESION DE LA ESPECIE 2
         peb2 = Math.pow(10,(OBJETO.c_antonie2[0] - OBJETO.c_antonie2[1]) / (OBJETO.c_antonie2[2] + t));
-        for(j = 0; j < OBJETO.n; j++){
+        for(j = 0; j < n; j++){
             xa = peb1 * 0.2;
             xb = peb2 * 1.8;
             psup = (xa + xb) / 2;
@@ -146,6 +140,7 @@ function sitemaIdeal(){
     ////& SISTEMA IDEAL TEMPERATURA CONSTANTE
    if (nombreConst === "Temperatura"){
          p=nombreGrado;
+         console.log(T_general[0][0]);
         T_general[11][0] = (OBJETO.c_antoine1[1] / OBJETO.c_antoine1[0] - Math.log10(p)) - OBJETO.c_antoine1[2];
         T_general[0][0] = (OBJETO.c_antoine2[1] / OBJETO.c_antoine2[0] - Math.log10(p)) - OBJETO.c_antoine2[2];
         for(var i=0; i<n;i++){
@@ -156,8 +151,8 @@ function sitemaIdeal(){
             T_general[i][7]=0;
             while(Math.abs(T_general[i][7]-1)>0.001){
                 tSup=(xa+xb)/2; //Temperatura de suposicion del sisteme en °C
-                T_general=[i][2]=Math.pow(10, OBJETO.c_antoine1[0] - OBJETO.c_antoine1[1] / (OBJETO.c_antoine1[2]) + tSup);//Presiones de saturación especie 1
-                T_general=[i][2]=Math.pow(10, OBJETO.c_antoine1[0] - OBJETO.c_antoine1[1] / (OBJETO.c_antoine1[2]) + tSup);//*Presiones de saturación especie 2
+                T_general[i][2]=Math.pow(10, OBJETO.c_antoine1[0] - OBJETO.c_antoine1[1] / (OBJETO.c_antoine1[2]) + tSup);//Presiones de saturación especie 1
+                T_general[i][2]=Math.pow(10, OBJETO.c_antoine1[0] - OBJETO.c_antoine1[1] / (OBJETO.c_antoine1[2]) + tSup);//*Presiones de saturación especie 2
                 T_general[i][3]=T_general[i][1] * T_general[i][2] / p;      //*Calculo de y1
                 T_general[i][6]=T_general[i][4] * T_general[i][5] / p;      //*Calculo de y2
                 T_general[i][7]=T_general[i][3] + T_general[i][6];
@@ -173,5 +168,41 @@ function sitemaIdeal(){
 
     return OBJETO;
 }
+
+function x1function(n){
+    var arreglo = [0], valorInicio = 0;
+    while(valorInicio < 1){
+      var tF=valorInicio += 1/n  || 1;
+        arreglo.push(tF.toFixed(1));
+    }
+    return arreglo;
+  }
+  
+  function x2function(n){
+    var arreglo = [1], valorInicio = 1;
+    while (valorInicio > 0) {
+      var tF=valorInicio -= 1/n  || 1;
+        arreglo.push(tF.toFixed(1));
+    }
+    arreglo.pop();
+    arreglo.push(0);
+    return arreglo;
+  }
+  
+  function t_general(x1,x2,n){
+    var matrix=[0];
+    for(let i=0; i<=n; i++){
+        matrix[i] = [0,0,0,0,0,0,0,0,0];
+    }
+    for(let i = 0; i <= n; i++){
+        matrix[i][1]=x1[i];
+        matrix[i][4]=x2[i];
+    }
+    matrix[0][3]=0;
+    matrix[n-1][3]=1;
+    matrix[0][8]=1;
+    matrix[n-1][8]=0;
+    return matrix
+  }
 
 export default OBJETO;

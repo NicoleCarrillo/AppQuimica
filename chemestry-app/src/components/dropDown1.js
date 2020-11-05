@@ -28,11 +28,9 @@ export default function SimpleSelect() {
     switch (x) {
       case 1:
         console.log(obj.orquestador(0,"acetona","cloroformo","","","")); //! ESTO LO DEJAMOS ASI O LO MODIFICAMOS?????
-        console.log(margules.acetonaCloroformo);
         break;
       case 2:
         console.log(obj.orquestador(0,"acetona","metanol","","",""));
-        console.log(margules.acetonaMetanol);
         break;
 
       default:
