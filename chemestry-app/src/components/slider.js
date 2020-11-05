@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import Slider from "@material-ui/core/Slider";
 import Tooltip from "@material-ui/core/Tooltip";
 
-var variable,constante;
-var valor=21;
+var variable, constante;
+var valor = 21;
 
 function ValueLabelComponent(props) {
   const { children, open, value } = props;
@@ -32,9 +32,9 @@ const useStyles = makeStyles({
 });
 
 function valuetext(value) {
-  if(value!=valor){
-    console.log(obj.orquestador(0,"","",variable,constante,value));
-    valor=value;
+  if (value !== valor) {
+    console.log(obj.orquestador(0, "", "", variable, constante, value));
+    valor = value;
   }
   return `${value}°C`;
 }
@@ -135,11 +135,11 @@ const marksP = [
 
 export default function VerticalSlider(props) {
   const classes = useStyles();
-  constante=props.name;
-  if(constante==="Temperatura"){
-    variable="Presion";
-  }else{
-    variable="Temperatura";
+  constante = props.name;
+  if (constante === "Temperatura") {
+    variable = "Presion";
+  } else {
+    variable = "Temperatura";
   }
   return (
     <React.Fragment>
