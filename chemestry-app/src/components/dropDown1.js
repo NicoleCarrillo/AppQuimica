@@ -32,7 +32,57 @@ export default function SimpleSelect() {
       case 2:
         console.log(obj.orquestador(0,"acetona","metanol","","",""));
         break;
-
+      case 3:
+        console.log(obj.orquestador(0,"acetona","agua","","",""));
+        break;
+      case 4:
+        console.log(obj.orquestador(0,"tetracloruroDeCarbono","benceno","","",""));
+        break;
+      case 5:
+        console.log(obj.orquestador(0,"cloroformo","metanol","","",""));
+        break;
+      case 6:
+        console.log(obj.orquestador(0,"etanol","benceno","","",""));
+        break;
+      case 7:
+        console.log(obj.orquestador(0,"etanol","agua","","",""));
+        break;
+      case 8:
+        console.log(obj.orquestador(0,"acetatoDeEtilo","etanol","","",""));
+        break;
+      case 9:
+        console.log(obj.orquestador(0,"nHexano","etanol","","",""));
+        break;
+      case 10:
+        console.log(obj.orquestador(0,"metanol","benceno","","",""));
+        break;
+      case 11:
+      console.log(obj.orquestador(0,"metanol","acetatoDeEtilo","","",""));
+      break;
+      case 12:
+        console.log(obj.orquestador(0,"metanol","agua","","",""));
+        break;
+      case 13:
+        console.log(obj.orquestador(0,"acetatoDeMetilo","metanol","","",""));
+        break;
+      case 14:
+        console.log(obj.orquestador(0,"propanol1","agua","","",""));
+        break;
+      case 15:
+        console.log(obj.orquestador(0,"propanol2","agua","","",""));
+        break;
+      case 16:
+        console.log(obj.orquestador(0,"tetraHidrofurano","agua","","",""));
+        break;
+      case 17:
+        console.log(obj.orquestador(0,"agua","acidoAcetico","","",""));
+        break;
+      case 18:
+        console.log(obj.orquestador(0,"agua","butanol1","","",""));
+        break;
+      case 19:
+        console.log(obj.orquestador(0,"agua","acidoFormico","","",""));
+        break;
       default:
         break;
     }

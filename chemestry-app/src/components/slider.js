@@ -92,54 +92,54 @@ const marksP = [
     label: "0 mmHg",
   },
   {
-    value: 10,
-    label: "10 mmHg",
-  },
-  {
-    value: 20,
-    label: "20 mmHg",
-  },
-  {
-    value: 30,
-    label: "30 mmHg",
-  },
-  {
-    value: 40,
-    label: "40 mmHg",
-  },
-  {
-    value: 50,
-    label: "50 mmHg",
-  },
-  {
-    value: 60,
-    label: "60 mmHg",
-  },
-  {
-    value: 70,
-    label: "70 mmHg",
-  },
-  {
-    value: 80,
-    label: "80 mmHg",
-  },
-  {
-    value: 90,
-    label: "90 mmHg",
-  },
-  {
     value: 100,
+    label: "100 mmHg",
+  },
+  {
+    value: 200,
+    label: "200 mmHg",
+  },
+  {
+    value: 300,
+    label: "300 mmHg",
+  },
+  {
+    value: 400,
+    label: "400 mmHg",
+  },
+  {
+    value: 500,
+    label: "500 mmHg",
+  },
+  {
+    value: 600,
+    label: "600 mmHg",
+  },
+  {
+    value: 700,
+    label: "700 mmHg",
+  },
+  {
+    value: 800,
+    label: "800 mmHg",
+  },
+  {
+    value: 900,
+    label: "900 mmHg",
+  },
+  {
+    value: 1000,
     label: "1000 mmHg",
   },
 ];
 
 export default function VerticalSlider(props) {
   const classes = useStyles();
-  constante = props.name;
-  if (constante === "Temperatura") {
-    variable = "Presion";
+  variable = props.name;
+  if (variable === "Temperatura") {
+    constante = "Presion";
   } else {
-    variable = "Temperatura";
+    constante = "Temperatura";
   }
   return (
     <React.Fragment>
@@ -153,6 +153,8 @@ export default function VerticalSlider(props) {
             defaultValue={20}
             aria-labelledby="vertical-slider"
             marks={marks}
+            min={10}
+            max={100}
           />
         ) : null}
         {props.name === "Presión" ? (
@@ -161,8 +163,10 @@ export default function VerticalSlider(props) {
             orientation="vertical"
             getAriaValueText={valuetext}
             valueLabelDisplay="on"
-            defaultValue={20}
+            defaultValue={200}
             aria-labelledby="vertical-slider"
+            min={100}
+            max={1000}
             marks={marksP}
           />
         ) : null}
