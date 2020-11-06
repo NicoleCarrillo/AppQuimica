@@ -3,7 +3,7 @@ import OBJETOConstantesAntoine from "../clases/constantesAntoine";
 const OBJETO = sitemaIdeal();
 var nombreSis1, nombreSis2, nombreVar, nombreConst, nombreGrado;
 const n = 11;
-let t,p,peb1,peb2,xa,xb,psup,tSup,T_general,respuesta;
+let t,p,peb1,peb2,xa,xb,psup,tSup,respuesta;
 
 function orquestador(tipo,nombreSistema1,nombreSistema2,variable,constante,grado) {
   if (nombreSis1 === undefined) { //~EVALUA EL PRIMER MOMENTO DEL CODIGO CUANDO SE ABRE LA APLICACION
@@ -58,6 +58,7 @@ function sistemaReal() {
 }
 
 function sitemaIdeal() {
+    
   var OBJETO = {
     variable: nombreVar,
     gradoo: nombreGrado,
@@ -71,43 +72,48 @@ function sitemaIdeal() {
     orquestador: orquestador,
   };
 
+  var T_general=t_general(OBJETO.x1,OBJETO.x2,OBJETO.n);
   
   //& SISTEMA IDEAL TEMPERATURA CONSTANTE
-  if (nombreConst === "Temperatura") {
-    let j;
+  if(nombreConst === "Presion"){
     t = nombreGrado;
-    T_general=OBJETO.T_general;
-    
-    peb1 = Math.pow(10,(OBJETO.c_antonie1[0] - OBJETO.c_antonie1[1] / (OBJETO.c_antonie1[2] + t))); //^ PRESION DE LA ESPECIE 1
-    peb2 = Math.pow(10,(OBJETO.c_antonie2[0] - OBJETO.c_antonie2[1] / (OBJETO.c_antonie2[2] + t))); //^ PRESION DE LA ESPECIE 2
-    
-    for (j = 0; j <= n; j++) {
-      xa = peb1 * 0.2;
-      xb = peb2 * 1.8;
-      psup = (xa + xb) / 2;
-      T_general[j][7] = 0;
-      while (Math.abs(T_general[j][7] - 1) > 0.001) {
+    //~ CALCULO DE LAS PRESIONES DE LAS SOLUCIONES
+    //^ PRESION DE LA ESPECIE 1
+    peb1 = Math.pow(10, (OBJETO.c_antonie1[0]-OBJETO.c_antonie1[1]/(OBJETO.c_antonie1[2]+t)));
+    console.log("peb1 = "+peb1);
+    //^ PRESION DE LA ESPECIE 2
+    peb2 = Math.pow(10, (OBJETO.c_antonie2[0]-OBJETO.c_antonie2[1]/(OBJETO.c_antonie2[2]+t)));
+    console.log("peb2 = "+peb2);
+    for(let j = 0; j <= OBJETO.n; j++){
+        xa = peb1 * 0.2;
+        console.log("xa = "+xa);
+        xb = peb2 * 1.8;
+        console.log("xb = "+xb);
         psup = (xa + xb) / 2;
-        T_general[j][3] = (T_general[j][1] * peb1) / psup; //*Calculo de y2
-        T_general[j][6] = (T_general[j][4] * peb2) / psup; //*Calculo de y2
-        T_general[j][7] = T_general[j][3] + T_general[j][6];
-        if (T_general[j][7] > 1) {
-          xa = psup;
-        } else {
-          xb = psup;
+        console.log("psup = "+ psup);
+        T_general[j][7] = 0;
+        while(Math.abs(T_general[j][7] - 1) > 0.001){
+            psup = (xa + xb) / 2;
+            T_general[j][3] = (T_general[j][1] * peb1) / psup; //*Calculo de y2
+            T_general[j][6] = (T_general[j][4] * peb2) / psup; //*Calculo de y2
+            T_general[j][7] = T_general[j][3] + T_general[j][6];
+            if (T_general[j][7] > 1) {
+                xa = psup;
+            } else {
+                xb = psup;
+            } 
         }
-      }
-      T_general[j][0] = psup;
-      T_general[j][2] = (OBJETO.c_antonie1[1] / (OBJETO.c_antonie1[0] - Math.log(T_general[j][0]))) -OBJETO.c_antonie1[2];
-      T_general[j][5] = (OBJETO.c_antonie2[1] / (OBJETO.c_antonie2[0] - Math.log(T_general[j][0]))) -OBJETO.c_antonie2[2];
+        T_general[j][0] = psup;
+        console.log(T_general[j][0]);
+        T_general[j][2] = (OBJETO.c_antonie1[1] / (OBJETO.c_antonie1[0] - Math.log(T_general[j][0]))) - OBJETO.c_antonie1[2];
+        console.log(T_general[j][2]);
+        T_general[j][5] = (OBJETO.c_antonie2[1] / (OBJETO.c_antonie2[0] - Math.log(T_general[j][0]))) - OBJETO.c_antonie2[2];
+        console.log(T_general[j][5]);
     }
-    console.log(T_general[0][0]);
-  }
-
-  ////& SISTEMA IDEAL PRESION CONSTANTE
-  if (nombreConst === "Presion") {
+    console.log(JSON.stringify(T_general));
+} else if (nombreConst === "Temperatura") {
     p = nombreGrado;
-    T_general=OBJETO.T_general;
+    T_general=OBJETO.T_general;//!!!DEMONIO
     T_general[11][0] = (OBJETO.c_antonie1[1] / (OBJETO.c_antonie1[0] - Math.log10(p))) - OBJETO.c_antonie1[2];
     T_general[0][0] = (OBJETO.c_antonie2[1] / (OBJETO.c_antonie2[0] - Math.log10(p))) - OBJETO.c_antonie2[2];
     for (let i = 0; i <= 11; i++) {  //^ PARA QUE LA TEMPERATURA SE AJUSTE
@@ -131,7 +137,7 @@ function sitemaIdeal() {
       }
       T_general[i][0] = tSup;
     }
-    console.log(T_general[0][0]);
+    console.log(JSON.stringify(T_general));
   }
 
   return OBJETO;
