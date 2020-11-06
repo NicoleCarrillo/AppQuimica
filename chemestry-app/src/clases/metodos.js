@@ -3,7 +3,7 @@ import OBJETOConstantesAntoine from "../clases/constantesAntoine";
 const OBJETO = sitemaIdeal();
 var nombreSis1, nombreSis2, nombreVar, nombreConst, nombreGrado;
 const n = 11;
-let t,p,peb1,peb2,xa,xb,psup,tSup,respuesta;
+var t,p,peb1,peb2,xa,xb,psup,tSup,respuesta;
 
 function orquestador(tipo,nombreSistema1,nombreSistema2,variable,constante,grado) {
   if (nombreSis1 === undefined) { //~EVALUA EL PRIMER MOMENTO DEL CODIGO CUANDO SE ABRE LA APLICACION
@@ -39,7 +39,7 @@ function orquestador(tipo,nombreSistema1,nombreSistema2,variable,constante,grado
   }
 
   if (nombreGrado === undefined) {
-    nombreGrado = 20;
+    nombreGrado = 200;
   } else {
     if (constante !== "") {
       nombreGrado = grado;
@@ -111,34 +111,34 @@ function sitemaIdeal() {
         console.log(T_general[j][5]);
     }
     console.log(JSON.stringify(T_general));
-} else if (nombreConst === "Temperatura") {
-    p = nombreGrado;
-    T_general=OBJETO.T_general;//!!!DEMONIO
-    T_general[11][0] = (OBJETO.c_antonie1[1] / (OBJETO.c_antonie1[0] - Math.log10(p))) - OBJETO.c_antonie1[2];
-    T_general[0][0] = (OBJETO.c_antonie2[1] / (OBJETO.c_antonie2[0] - Math.log10(p))) - OBJETO.c_antonie2[2];
-    for (let i = 0; i <= 11; i++) {  //^ PARA QUE LA TEMPERATURA SE AJUSTE
-      xa = T_general[11][0] * 0.2; //^TEMPERATURA BAJA
-      xb = T_general[0][0] * 1.8; //^TEMPERATURA ALTA
-      tSup = (xa + xb) / 2;
-      T_general[i][7] = 0;
-      while (Math.abs(T_general[i][7] - 1) > 0.001) {
-        tSup = (xa + xb) / 2; //*Temperatura de suposicion del sisteme en °C
-        T_general[i][2] = Math.pow(10,OBJETO.c_antonie1[0] - OBJETO.c_antonie1[1] / OBJETO.c_antonie1[2] + tSup); //*Presiones de saturación especie 1
-        T_general[i][5] = Math.pow(10,OBJETO.c_antonie2[0] - OBJETO.c_antonie2[1] / OBJETO.c_antonie2[2] + tSup); //*Presiones de saturación especie 2
-        T_general[i][3] = (T_general[i][1] * T_general[i][2]) / p; //*Calculo de y1
-        T_general[i][6] = (T_general[i][4] * T_general[i][5]) / p; //*Calculo de y2
-        T_general[i][7] = T_general[i][3] + T_general[i][6];
-        
-        if (T_general[i][7] > 1) {
-          xb = tSup;
-        } else {
-          xa = tSup;
-        }
-      }
-      T_general[i][0] = tSup;
-    }
-    console.log(JSON.stringify(T_general));
-  }
+} else  if (nombreConst === "Temperatura"){
+    p=nombreGrado;
+   T_general[OBJETO.n][0] = (OBJETO.c_antonie1[1] / (OBJETO.c_antonie1[0] - Math.log10(p))) - OBJETO.c_antonie1[2];
+   T_general[0][0] = (OBJETO.c_antonie2[1] / (OBJETO.c_antonie2[0] - Math.log10(p))) - OBJETO.c_antonie2[2];
+   for(let i=0; i<=OBJETO.n;i++){
+       //^ PARA QUE LA TEMPERATURA SE AJUSTE
+       xa = T_general[OBJETO.n][0] * 0.2;               //^TEMPERATURA BAJA
+       xb = T_general[0][0] * 1.8;               //^TEMPERATURA ALTA
+       tSup = (xa/xb)/2;
+       T_general[i][7]=0;
+       while(Math.abs(T_general[i][7]-1)>0.001){
+           tSup=(xa+xb)/2; //Temperatura de suposicion del sisteme en °C
+           T_general[i][2]=Math.pow(10, (OBJETO.c_antonie1[0]-OBJETO.c_antonie1[1]/(OBJETO.c_antonie1[2]+tSup)));//Presiones de saturación especie 1
+           //console.log(Math.pow(10, (OBJETO.c_antoine1[0]-OBJETO.c_antoine1[1]/(OBJETO.c_antoine1[2]+tSup))));
+           T_general[i][5]=Math.pow(10, (OBJETO.c_antonie2[0]-OBJETO.c_antonie2[1]/(OBJETO.c_antonie2[2]+tSup)));//*Presiones de saturación especie 2
+           T_general[i][3]=T_general[i][1] * T_general[i][2] / p;      //*Calculo de y1
+           T_general[i][6]=T_general[i][4] * T_general[i][5] / p;      //*Calculo de y2
+           T_general[i][7]=T_general[i][3] + T_general[i][6];
+           if(T_general[i][7]>1){
+               xb=tSup;
+           } else {
+               xa=tSup;
+           }
+       }
+       T_general[i][0]=tSup;
+   }
+   console.log(JSON.stringify(T_general));
+}
 
   return OBJETO;
 }
