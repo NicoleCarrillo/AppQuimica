@@ -1,5 +1,6 @@
 import React from "react";
-import Chart from "../components/chartEx";
+import Chart from "../components/chart";
+
 import Component1 from "../components/dropDown1";
 
 const middle = () => {

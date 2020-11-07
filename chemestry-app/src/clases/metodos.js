@@ -1,12 +1,20 @@
 import OBJETOConstantesAntoine from "../clases/constantesAntoine";
 
 const OBJETO = sitemaIdeal();
-var nombreSis1, nombreSis2, nombreVar, nombreConst, nombreGrado;
-const n = 11;
-var t,p,peb1,peb2,xa,xb,psup,tSup,respuesta;
+var nombreSis1, nombreSis2, nombreVar, nombreConst, nombreGrado, respuesta;
 
-function orquestador(tipo,nombreSistema1,nombreSistema2,variable,constante,grado) {
-  if (nombreSis1 === undefined) { //~EVALUA EL PRIMER MOMENTO DEL CODIGO CUANDO SE ABRE LA APLICACION
+var t, p, peb1, peb2, xa, xb, psup, tSup;
+
+function orquestador(
+  tipo,
+  nombreSistema1,
+  nombreSistema2,
+  variable,
+  constante,
+  grado
+) {
+  if (nombreSis1 === undefined) {
+    //~EVALUA EL PRIMER MOMENTO DEL CODIGO CUANDO SE ABRE LA APLICACION
     nombreSis1 = "acetona"; //~ MODO DEFAULT
   } else {
     if (nombreSistema1 !== "") {
@@ -58,7 +66,6 @@ function sistemaReal() {
 }
 
 function sitemaIdeal() {
-    
   var OBJETO = {
     variable: nombreVar,
     gradoo: nombreGrado,
@@ -67,93 +74,177 @@ function sitemaIdeal() {
     c_antonie2: OBJETOConstantesAntoine[nombreSis2],
     x1: x1(11),
     x2: x2(11),
-    T_general: t_general(x1,x2,11),
+    T_general: t_general(x1, x2, 11),
     //*ASI INVOCAS METODOS EN JAVASCRIPT -> NICOLE
     orquestador: orquestador,
   };
 
-  var T_general=t_general(OBJETO.x1,OBJETO.x2,OBJETO.n);
-  
+  var T_general = t_general(OBJETO.x1, OBJETO.x2, OBJETO.n);
+
   //& SISTEMA IDEAL TEMPERATURA CONSTANTE
-  if(nombreConst === "Presion"){
+  if (nombreConst === "Presion") {
     t = nombreGrado;
     //~ CALCULO DE LAS PRESIONES DE LAS SOLUCIONES
     //^ PRESION DE LA ESPECIE 1
-    peb1 = Math.pow(10, (OBJETO.c_antonie1[0]-OBJETO.c_antonie1[1]/(OBJETO.c_antonie1[2]+t)));
-    console.log("peb1 = "+peb1);
+    peb1 = Math.pow(
+      10,
+      OBJETO.c_antonie1[0] - OBJETO.c_antonie1[1] / (OBJETO.c_antonie1[2] + t)
+    );
+    console.log("peb1 = " + peb1);
     //^ PRESION DE LA ESPECIE 2
-    peb2 = Math.pow(10, (OBJETO.c_antonie2[0]-OBJETO.c_antonie2[1]/(OBJETO.c_antonie2[2]+t)));
-    console.log("peb2 = "+peb2);
-    for(let j = 0; j <= OBJETO.n; j++){
-        xa = peb1 * 0.2;
-        console.log("xa = "+xa);
-        xb = peb2 * 1.8;
-        console.log("xb = "+xb);
+    peb2 = Math.pow(
+      10,
+      OBJETO.c_antonie2[0] - OBJETO.c_antonie2[1] / (OBJETO.c_antonie2[2] + t)
+    );
+    console.log("peb2 = " + peb2);
+    for (let j = 0; j <= OBJETO.n; j++) {
+      xa = peb1 * 0.2;
+      console.log("xa = " + xa);
+      xb = peb2 * 1.8;
+      console.log("xb = " + xb);
+      psup = (xa + xb) / 2;
+      console.log("psup = " + psup);
+      T_general[j][7] = 0;
+      while (Math.abs(T_general[j][7] - 1) > 0.001) {
         psup = (xa + xb) / 2;
-        console.log("psup = "+ psup);
-        T_general[j][7] = 0;
-        while(Math.abs(T_general[j][7] - 1) > 0.001){
-            psup = (xa + xb) / 2;
-            T_general[j][3] = (T_general[j][1] * peb1) / psup; //*Calculo de y2
-            T_general[j][6] = (T_general[j][4] * peb2) / psup; //*Calculo de y2
-            T_general[j][7] = T_general[j][3] + T_general[j][6];
-            if (T_general[j][7] > 1) {
-                xa = psup;
-            } else {
-                xb = psup;
-            } 
+        T_general[j][3] = (T_general[j][1] * peb1) / psup; //*Calculo de y2
+        T_general[j][6] = (T_general[j][4] * peb2) / psup; //*Calculo de y2
+        T_general[j][7] = T_general[j][3] + T_general[j][6];
+        if (T_general[j][7] > 1) {
+          xa = psup;
+        } else {
+          xb = psup;
         }
-        T_general[j][0] = psup;
-        console.log(T_general[j][0]);
-        T_general[j][2] = (OBJETO.c_antonie1[1] / (OBJETO.c_antonie1[0] - Math.log(T_general[j][0]))) - OBJETO.c_antonie1[2];
-        console.log(T_general[j][2]);
-        T_general[j][5] = (OBJETO.c_antonie2[1] / (OBJETO.c_antonie2[0] - Math.log(T_general[j][0]))) - OBJETO.c_antonie2[2];
-        console.log(T_general[j][5]);
+      }
+      T_general[j][0] = psup;
+      console.log(T_general[j][0]);
+      T_general[j][2] =
+        OBJETO.c_antonie1[1] /
+          (OBJETO.c_antonie1[0] - Math.log(T_general[j][0])) -
+        OBJETO.c_antonie1[2];
+      console.log(T_general[j][2]);
+      T_general[j][5] =
+        OBJETO.c_antonie2[1] /
+          (OBJETO.c_antonie2[0] - Math.log(T_general[j][0])) -
+        OBJETO.c_antonie2[2];
+      console.log(T_general[j][5]);
     }
     console.log(JSON.stringify(T_general));
-} else  if (nombreConst === "Temperatura"){
-    p=nombreGrado;
-   T_general[OBJETO.n][0] = (OBJETO.c_antonie1[1] / (OBJETO.c_antonie1[0] - Math.log10(p))) - OBJETO.c_antonie1[2];
-   T_general[0][0] = (OBJETO.c_antonie2[1] / (OBJETO.c_antonie2[0] - Math.log10(p))) - OBJETO.c_antonie2[2];
-   for(let i=0; i<=OBJETO.n;i++){
-       //^ PARA QUE LA TEMPERATURA SE AJUSTE
-       xa = T_general[OBJETO.n][0] * 0.2;               //^TEMPERATURA BAJA
-       xb = T_general[0][0] * 1.8;               //^TEMPERATURA ALTA
-       tSup = (xa/xb)/2;
-       T_general[i][7]=0;
-       while(Math.abs(T_general[i][7]-1)>0.001){
-           tSup=(xa+xb)/2; //Temperatura de suposicion del sisteme en °C
-           T_general[i][2]=Math.pow(10, (OBJETO.c_antonie1[0]-OBJETO.c_antonie1[1]/(OBJETO.c_antonie1[2]+tSup)));//Presiones de saturación especie 1
-           //console.log(Math.pow(10, (OBJETO.c_antoine1[0]-OBJETO.c_antoine1[1]/(OBJETO.c_antoine1[2]+tSup))));
-           T_general[i][5]=Math.pow(10, (OBJETO.c_antonie2[0]-OBJETO.c_antonie2[1]/(OBJETO.c_antonie2[2]+tSup)));//*Presiones de saturación especie 2
-           T_general[i][3]=T_general[i][1] * T_general[i][2] / p;      //*Calculo de y1
-           T_general[i][6]=T_general[i][4] * T_general[i][5] / p;      //*Calculo de y2
-           T_general[i][7]=T_general[i][3] + T_general[i][6];
-           if(T_general[i][7]>1){
-               xb=tSup;
-           } else {
-               xa=tSup;
-           }
-       }
-       T_general[i][0]=tSup;
-   }
-   console.log(JSON.stringify(T_general));
-}
+  } else if (nombreConst === "Temperatura") {
+    p = nombreGrado;
+    T_general[OBJETO.n][0] =
+      OBJETO.c_antonie1[1] / (OBJETO.c_antonie1[0] - Math.log10(p)) -
+      OBJETO.c_antonie1[2];
+    T_general[0][0] =
+      OBJETO.c_antonie2[1] / (OBJETO.c_antonie2[0] - Math.log10(p)) -
+      OBJETO.c_antonie2[2];
+    for (let i = 0; i <= OBJETO.n; i++) {
+      //^ PARA QUE LA TEMPERATURA SE AJUSTE
+      xa = T_general[OBJETO.n][0] * 0.2; //^TEMPERATURA BAJA
+      xb = T_general[0][0] * 1.8; //^TEMPERATURA ALTA
+      tSup = xa / xb / 2;
+      T_general[i][7] = 0;
+      while (Math.abs(T_general[i][7] - 1) > 0.001) {
+        tSup = (xa + xb) / 2; //Temperatura de suposicion del sisteme en °C
+        T_general[i][2] = Math.pow(
+          10,
+          OBJETO.c_antonie1[0] -
+            OBJETO.c_antonie1[1] / (OBJETO.c_antonie1[2] + tSup)
+        ); //Presiones de saturación especie 1
+        //console.log(Math.pow(10, (OBJETO.c_antoine1[0]-OBJETO.c_antoine1[1]/(OBJETO.c_antoine1[2]+tSup))));
+        T_general[i][5] = Math.pow(
+          10,
+          OBJETO.c_antonie2[0] -
+            OBJETO.c_antonie2[1] / (OBJETO.c_antonie2[2] + tSup)
+        ); //*Presiones de saturación especie 2
+        T_general[i][3] = (T_general[i][1] * T_general[i][2]) / p; //*Calculo de y1
+        T_general[i][6] = (T_general[i][4] * T_general[i][5]) / p; //*Calculo de y2
+        T_general[i][7] = T_general[i][3] + T_general[i][6];
+        if (T_general[i][7] > 1) {
+          xb = tSup;
+        } else {
+          xa = tSup;
+        }
+      }
+      T_general[i][0] = tSup;
+    }
+    console.log(JSON.stringify(T_general));
+  }
+
+  respuesta = [
+    {
+      liquido: T_general[0][1],
+      vapor: T_general[0][4],
+      name: "0",
+    },
+    {
+      liquido: T_general[1][1],
+      vapor: T_general[1][4],
+      name: "0.1",
+    },
+    {
+      liquido: T_general[2][1],
+      vapor: T_general[2][4],
+      name: "0.2",
+    },
+    {
+      liquido: T_general[3][1],
+      vapor: T_general[3][4],
+      name: "0.3",
+    },
+    {
+      liquido: T_general[4][1],
+      vapor: T_general[4][4],
+      name: "0.4",
+    },
+    {
+      liquido: T_general[5][1],
+      vapor: T_general[5][4],
+      name: "0.5",
+    },
+    {
+      liquido: T_general[6][1],
+      vapor: T_general[6][4],
+      name: "0.6",
+    },
+    {
+      liquido: T_general[7][1],
+      vapor: T_general[7][4],
+      name: "0.7",
+    },
+    {
+      liquido: T_general[8][1],
+      vapor: T_general[8][4],
+      name: "0.8",
+    },
+    {
+      liquido: T_general[9][1],
+      vapor: T_general[9][4],
+      name: "0.9",
+    },
+    {
+      liquido: T_general[10][1],
+      vapor: T_general[10][4],
+      name: "1",
+    },
+  ];
 
   return OBJETO;
 }
 
 function x1(n) {
-  var arreglo = [0], valorInicio = 0;
-  while(valorInicio < 1){
-    var tF=valorInicio += 1/11 || 1;
-      arreglo.push(tF.toFixed(1));
+  var arreglo = [0],
+    valorInicio = 0;
+  while (valorInicio < 1) {
+    var tF = (valorInicio += 1 / 11 || 1);
+    arreglo.push(tF.toFixed(1));
   }
   return arreglo;
 }
 
 function x2(n) {
-  let arreglo = [1],valorInicio = 1;
+  let arreglo = [1],
+    valorInicio = 1;
   while (valorInicio > 0) {
     let tF = (valorInicio -= 1 / n || 1);
     arreglo.push(tF.toFixed(1));
@@ -163,10 +254,10 @@ function x2(n) {
   return arreglo;
 }
 
-function t_general(x1,x2,n) {
+function t_general(x1, x2, n) {
   let matrix = [0];
   for (let i = 0; i <= n; i++) {
-    matrix[i] = [0,0,0,0,0,0,0,0];
+    matrix[i] = [0, 0, 0, 0, 0, 0, 0, 0];
   }
   for (let i = 0; i <= n; i++) {
     matrix[i][1] = x1[i];
